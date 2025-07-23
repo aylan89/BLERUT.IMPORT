@@ -434,6 +434,43 @@
           <p><strong></strong></p>
           <p><strong></strong></p>
       </div>
+
+             <!-- Agrega más productos de la serie IRF aquí -->          
+   <script>
+    function searchProducts() {
+        const input = document.getElementById('searchInput').value.toLowerCase();
+        const categories = document.querySelectorAll('.category');
+
+        categories.forEach(category => {
+            const products = Array.from(category.querySelectorAll('.product-item'));
+            let hasMatch = false;
+
+            products.forEach(product => {
+                const productName = product.querySelector('h3').textContent.toLowerCase();
+                if (productName.includes(input)) {
+                    product.style.display = 'block';
+                    hasMatch = true;
+                } else {
+                    product.style.display = 'none';
+                }
+            });
+
+            // Mostrar la categoría solo si tiene al menos un producto visible
+            category.style.display = hasMatch ? 'block' : 'none';
+        });
+    }
+
+    document.getElementById('searchInput').addEventListener('input', searchProducts);
+</script>
+
+</body>
+<footer class="footer">
+    <p>&copy; 2025 Belrut Import. Todos los derechos reservados.</p>
+    <p>&copysr;  Las imagenes son usadas como apollo grafico, no como la referencia exacta del producto.  </p>
+  </footer>
+
+</html>
+
    
    
 
