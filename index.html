@@ -1,270 +1,373 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    
-</head>
-<body>
-    <h1>Belrut Import</h1>
 
-    
-</body>
-</html><!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Productos</title>
-    <style>
-        /* Estilos generales */
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #e3f2fd; /* Fondo azul claro */
-            color: #333;
-            line-height: 1.6;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Belrut Import - Lista de Productos</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(to right, rgba(227, 242, 253, 0.9), rgba(255, 255, 255, 0.9)), url('ELEC..jpg') no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
 
-        h1 {
-            text-align: center;
-            color: #1565c0; /* Azul más oscuro para el título */
-            font-size: 2.5rem;
-            margin: 20px 0;
-            font-weight: 700;
-        }
+    h1 {
+      text-align: center;
+      color: #0f9d58;
+      font-size: 3rem;
+      margin: 40px 0 20px;
+      font-weight: 700;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    }
 
-        /* Estilos del buscador */
-        .search-container {
-            text-align: center;
-            margin: 20px 0;
-        }
+    .search-container {
+      text-align: center;
+      margin: 20px 0;
+    }
 
-        .search-container input[type="text"] {
-            width: 300px;
-            padding: 10px;
-            border: 2px solid #1565c0;
-            border-radius: 5px;
-            font-size: 1rem;
-            outline: none;
-        }
+    .search-container input[type="text"] {
+      width: 80%;
+      max-width: 400px;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 50px;
+      font-size: 1rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease-in-out;
+    }
 
-        .search-container input[type="text"]:focus {
-            border-color: #0d47a1;
-        }
+    .search-container input[type="text"]:focus {
+      outline: none;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    }
 
-        /* Estilos de categorías */
-        .category {
-            margin: 20px auto;
-            max-width: 1200px;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
+    .category {
+      margin: 30px auto;
+      max-width: 1200px;
+      background-color: rgba(255, 255, 255, 0.95);
+      padding: 25px;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
 
-        .category:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-        }
+    .category:hover {
+      transform: translateY(-6px);
+    }
 
-        .category h2 {
-            background-color: #bbdefb; /* Azul claro para el fondo del título de categoría */
-            padding: 15px;
-            border-left: 5px solid #1976d2; /* Azul más oscuro para el borde */
-            color: #0d47a1; /* Azul oscuro para el texto */
-            margin: -20px -20px 20px -20px;
-            border-radius: 12px 12px 0 0;
-            font-size: 1.8rem;
-            font-weight: 600;
-        }
+    .category h2 {
+      background-color: #e3f2fd;
+      padding: 16px;
+      border-left: 6px solid #0d47a1;
+      color: #0d47a1;
+      margin: -25px -25px 20px -25px;
+      border-radius: 16px 16px 0 0;
+      font-size: 1.9rem;
+    }
 
-        /* Estilos de la lista de productos */
-        .product-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 20px;
-            padding: 10px;
-        }
+    .product-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 24px;
+      padding: 10px;
+    }
 
-        .product-item {
-            background-color: #fff;
-            border: 1px solid #ddd;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            position: relative;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
+    .product-item {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      transition: all 0.3s ease;
+    }
 
-        .product-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-        }
+    .product-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 18px rgba(0, 0, 0, 0.15);
+    }
 
-        .product-item h3 {
-            margin: 0 0 10px;
-            color: #1976d2; /* Azul para el título del producto */
-            font-size: 1.4rem;
-            font-weight: 600;
-        }
+    .product-item img {
+      max-width: 100%;
+      border-radius: 10px;
+      margin-bottom: 12px;
+      transition: transform 0.3s ease;
+    }
 
-        .product-item p {
-            margin: 5px 0;
-            color: #555;
-            font-size: 1rem;
-        }
+    .product-item:hover img {
+      transform: scale(1.05);
+    }
 
-        .price {
-            font-weight: bold;
-            color: #28a745; /* Verde para el precio */
-            font-size: 1.2rem;
-        }
+    .product-item h3 {
+      font-size: 1.4rem;
+      color: #1976d2;
+      margin-bottom: 8px;
+    }
 
-        .product-item img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-            margin-bottom: 15px;
-            transition: transform 0.3s ease;
-        }
+    .product-item p {
+      color: #555;
+      font-size: 1rem;
+    }
 
-        .product-item:hover img {
-            transform: scale(1.05);
-        }
+    .price {
+      font-size: 1.2rem;
+      color: #28a745;
+      font-weight: bold;
+    }
 
-        /* Estilos del submenú */
-        .submenu {
-            display: none;
-            position: absolute;
-            background-color: #fff;
-            border: 1px solid #ddd;
-            padding: 15px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            z-index: 1;
-            top: 100%;
-            left: 0;
-            width: 100%;
-            opacity: 0;
-            transition: opacity 0.3s ease, transform 0.3s ease;
-            transform: translateY(10px);
-        }
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2rem;
+      }
+      .category h2 {
+        font-size: 1.4rem;
+      }
+    }
+    .navbar {
+  background-color: #ffffffd9;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
 
-        .product-item:hover .submenu {
-            display: block;
-            opacity: 1;
-            transform: translateY(0);
-        }
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-        .submenu p {
-            margin: 5px 0;
-            color: #555;
-            font-size: 0.9rem;
-        }
+.logo {
+  font-size: 1.8rem;
+  color: #0f9d58;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
 
-        /* Estilos responsivos */
-        @media (max-width: 768px) {
-            .product-list {
-                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            }
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
 
-            h1 {
-                font-size: 2rem;
-            }
+.nav-links li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: color 0.3s;
+}
 
-            .category h2 {
-                font-size: 1.5rem;
-            }
-        }
-    </style>
+.nav-links li a:hover {
+  color: #0f9d58;
+}
+
+.footer {
+  background-color: #f8f9fa;
+  text-align: center;
+  padding: 1rem 0;
+  font-size: 0.95rem;
+  color: #555;
+  margin-top: 40px;
+  border-top: 1px solid #ddd;
+}
+.print-btn {
+  background-color: #0f9d58;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 1rem;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+.print-btn:hover {
+  background-color: #0b7c43;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+@media print {
+  .print-btn {
+    display: none;
+  }
+}
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+    box-shadow: none !important;
+  }
+
+  .navbar,
+  .footer,
+  .print-btn,
+  .search-container {
+    display: none !important;
+  }
+
+  .category {
+    background: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 0 20px 0 !important;
+  }
+
+  .category h2 {
+    background: none !important;
+    color: black !important;
+    border: none !important;
+    margin: 0 0 10px 0 !important;
+    padding: 0 !important;
+  }
+
+  .product-item {
+    box-shadow: none !important;
+    border: 1px solid #ccc;
+    page-break-inside: avoid;
+  }
+
+  .product-item img {
+    max-height: 120px;
+    object-fit: contain;
+  }
+
+  @page {
+    margin: 15mm;
+  }
+}
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+    margin: 0;
+    padding: 0;
+    font-size: 8px;
+    line-height: 1;
+  }
+
+  .navbar,
+  .footer,
+  .print-btn,
+  .search-container,
+  img,
+  .submenu {
+    display: none !important;
+  }
+
+  h1 {
+    font-size: .0.9rem;
+    margin: 10px 0;
+    text-align: center;
+  }
+
+  .category {
+    margin: 0;
+    padding: 0;
+    background: none;
+    box-shadow: none;
+  }
+
+  .category h2 {
+    font-size: 0.9rem;
+    margin: 10px 0 5px;
+    color: black;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 2px;
+  }
+
+  .product-list {
+    display: block;
+    padding: 0;
+    margin: 0;
+  }
+
+  .product-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom: 1px solid #ccc;
+    padding: 4px 0;
+    font-size: 0.9rem;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  .product-item h3,
+  .product-item p,
+  .price {
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+    color: black;
+    font-size: 0.8rem
+  }
+
+  .product-item h3 {
+    flex: 2;
+  }
+
+  .product-item p {
+    flex: 3;
+    padding-left: 10px;
+  }
+
+  .price {
+    flex: 1;
+    text-align: right;
+    font-weight: bold;
+  }
+
+  @page {
+    margin: 8mm;
+    size: A4 portrait;
+  }
+}
+
+  </style>
+
 </head>
-<body>
-    <h1>Lista de Productos</h1>
+  
+<div style="text-align: center; margin: 20px;">
+  <button onclick="window.print()" class="print-btn">🖨️ Imprimir / Guardar PDF</button>
+</div>
 
+<body>
+    <header class="navbar">
+        <div class="container">
+          <h2 class="logo">Belrut Import</h2>
+          <nav>
+            <ul class="nav-links">
+              <li><a href="#">Inicio</a></li>
+              <li><a href="#"></a></li>
+              <li><a href=""></a></li>
+              <li><a href="#">Contactos</a></li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+    <h1>Listado de Productos</h1>
+    
     <!-- Buscador de productos -->
     <div class="search-container">
         <input type="text" id="searchInput" placeholder="Buscar producto...">
     </div>
-
-    <!-- IRF Series -->
-    <div class="category">
-        <h2>IRF Series</h2>
-        <div class="product-list" id="irfSeries">
-            <div class="product-item">
-                <img src="3205.jpg" width="180px" alt="IFR 3205 ORIGINA">
-                <h3>IRF3205 ORIGINAL</h3>
-                <p>50 por regleta</p>
-                <p class="price">$19.00</p>
-                <div class="submenu">
-                    <p>Voltaje: 55V</p>
-                    <p>Amperaje: 110A</p>
-                </div>
-            </div>
-            <div class="product-item">
-                <img src="ruta/a/la/imagen/irf064.jpg" alt="IRF064 ORIGINAL">
-                <h3>IRF064 ORIGINAL</h3>
-                <p>25 por regleta</p>
-                <p class="price">$45.00</p>
-                <div class="submenu">
-                    <p>Voltaje: 60V</p>
-                    <p>Amperaje: 70A</p>
-                </div>
-            </div>
-            
-            <!-- Agrega más productos de la serie IRF aquí -->
-        </div>
-    </div>
-
-    <!-- BTA Series -->
-    <div class="category">
-        <h2>BTA Series</h2>
-        <div class="product-list" id="btaSeries">
-            <div class="product-item">
-                <img src="ruta/a/la/imagen/bta24.jpg" alt="BTA24-600CW">
-                <h3>BTA24-600CW</h3>
-                <p>50 por regleta</p>
-                <p class="price">$20.00</p>
-                <div class="submenu">
-                    <p>Voltaje: 600V</p>
-                    <p>Amperaje: 24A</p>
-                </div>
-            </div>
-            <div class="product-item">
-                <img src="ruta/a/la/imagen/bta40.jpg" alt="BTA40-600B">
-                <h3>BTA40-600B</h3>
-                <p>Individual</p>
-                <p class="price">$125.00</p>
-                <div class="submenu">
-                    <p>Voltaje: 600V</p>
-                    <p>Amperaje: 40A</p>
-                </div>
-            </div>
-            <!-- Agrega más productos de la serie BTA aquí -->
-        </div>
-    </div>
-
-    <!-- Más categorías y productos pueden ser agregados aquí -->
-
-    <script>
-        // Función para filtrar productos
-        function searchProducts() {
-            const input = document.getElementById('searchInput').value.toLowerCase();
-            const products = document.querySelectorAll('.product-item');
-
-            products.forEach(product => {
-                const productName = product.querySelector('h3').textContent.toLowerCase();
-                if (productName.includes(input)) {
-                    product.style.display = 'block';
-                } else {
-                    product.style.display = 'none';
-                }
-            });
-        }
-
-        // Evento para ejecutar la búsqueda al escribir en el campo de búsqueda
-        document.getElementById('searchInput').addEventListener('input', searchProducts);
-    </script>
-</body>
-</html>
+  <!-- CONTROLES -->
+<div class="category">
+  <h2>CONTROLES</h2>
+  <div class="product-list" id="mosfets">
+      
+      <!-- TV CONTROL TCL -->
+      <div class="product-item">
+          <img src="irf3205.jpg" width="180px" alt="IRF3205 ORIGINAL">
+          <h3>TC (TCL)</h3>
+          <p>200 POR CAJA</p>
+          <p class="price">$145.00 PESOS</p>
+          <p><strong>:</strong> </p>
+          <p><strong>:</strong> </p>
+      </div>
