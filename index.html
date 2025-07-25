@@ -242,26 +242,24 @@
   }
 }
 @media print {
-  body {
-    background: white !important;
-    color: black !important;
-    margin: 0;
-    padding: 0;
-    font-size: 8px;
-    line-height: 1;
-  }
-
   .navbar,
   .footer,
   .print-btn,
   .search-container,
-  img,
   .submenu {
     display: none !important;
   }
 
+  img {
+    display: inline-block !important;
+    max-height: 80px;
+    max-width: 80px;
+    object-fit: contain;
+    margin-right: 10px;
+  }
+
   h1 {
-    font-size: .0.9rem;
+    font-size: 0.9rem;
     margin: 10px 0;
     text-align: center;
   }
@@ -290,6 +288,7 @@
   .product-item {
     display: flex;
     flex-direction: row;
+    align-items: center;
     justify-content: space-between;
     border-bottom: 1px solid #ccc;
     padding: 4px 0;
@@ -305,7 +304,7 @@
     padding: 0;
     font-weight: normal;
     color: black;
-    font-size: 0.8rem
+    font-size: 0.8rem;
   }
 
   .product-item h3 {
@@ -313,7 +312,7 @@
   }
 
   .product-item p {
-    flex: 3;
+    flex: 2;
     padding-left: 10px;
   }
 
