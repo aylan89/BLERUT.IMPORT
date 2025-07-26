@@ -1238,9 +1238,9 @@
         doc.setFillColor(15, 157, 88);
         doc.rect(10, 50, 190, 10, 'F');
         doc.text('Producto', 15, 56);
-        doc.text('Cantidad', 100, 56);
-        doc.text('Precio Unitario', 140, 56);
-        doc.text('Subtotal', 180, 56, { align: 'right' });
+        doc.text('Cantidad', 95, 56);
+        doc.text('Precio Unitario', 130, 56);
+        doc.text('Subtotal', 190, 56, { align: 'right' });
         
         // Productos seleccionados
         doc.setFontSize(10);
@@ -1266,7 +1266,7 @@
                 doc.text(`$${price.toFixed(2)}`, 140, y);
                 
                 // Subtotal
-                doc.text(`$${subtotal.toFixed(2)}`, 180, y, { align: 'right' });
+                doc.text(`$${subtotal.toFixed(2)}`, 187, y, { align: 'right' });
                 
                 y += 7;
                 
@@ -1287,7 +1287,7 @@
             doc.setTextColor(0, 0, 0);
             doc.setFillColor(227, 242, 253); // Color de fondo del total
             doc.rect(10, y + 5, 190, 10, 'F');
-            doc.text('TOTAL:', 140, y + 11);
+            doc.text('TOTAL:', 120, y + 11);
             doc.text(total, 180, y + 11, { align: 'right' });
             
             // Notas
