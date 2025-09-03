@@ -401,6 +401,18 @@
         color: #000;
         background: white !important;
       }
+      /* Opcional: Ajustar para mejor uso del espacio horizontal */
+  .product-item {
+    width: 48%;  /* Dos columnas en horizontal */
+    float: left;
+    margin-right: 2%;
+    box-sizing: border-box;
+  }
+  
+  .product-item:nth-child(2n) {
+    margin-right: 0;  /* Eliminar margen derecho en cada segunda tarjeta */
+  }
+}
     }
   </style>
 </head>
